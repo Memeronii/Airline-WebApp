@@ -29,15 +29,6 @@ def database_connect():
     # use a different set of credentials that are setup for localhost or winhost
     connectiontarget = 'DATABASE'
     try:
-        '''
-        This is doing a couple of things in the back
-        what it is doing is:
-
-        connect(database='y2?i2120_unikey',
-            host='awsprddbs4836.shared.sydney.edu.au,
-            password='password_from_config',
-            user='y2?i2120_unikey')
-        '''
         targetdb = ""
         if ('database' in config[connectiontarget]):
             targetdb = config[connectiontarget]['database']
