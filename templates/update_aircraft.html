@@ -1,0 +1,32 @@
+{% include 'top.html' %}
+<div id="content" class="container my-4">
+    <h1>Update Aircraft</h1>
+    <form method="post">
+        <div class="form-group">
+            <label for="AircraftID">Aircraft ID:</label>
+            <input type="text" id="AircraftID" name="AircraftID" class="form-control" value="{{ aircraft['aircraftid'] }}" required>
+        </div>
+        <div class="form-group">
+            <label for="ICAOCode">ICAO Code:</label>
+            <input type="text" id="ICAOCode" name="ICAOCode" class="form-control" value="{{ aircraft['icaocode'] }}" required>
+        </div>
+        <div class="form-group">
+            <label for="AircraftRegistration">Aircraft Registration:</label>
+            <input type="text" id="AircraftRegistration" name="AircraftRegistration" class="form-control" value="{{ aircraft['aircraftregistration'] }}" required>
+        </div>
+        <div class="form-group">
+            <label for="Name">Manufacturer:</label>
+            <input type="text" id="Name" name="Name" class="form-control" value="{{ aircraft['name'] }}" required>
+        </div>
+        <div class="form-group">
+            <label for="Manufacturer">Model:</label>
+            <input type="text" id="Manufacturer" name="Manufacturer" class="form-control" value="{{ aircraft['manufacturer'] }}" required>
+        </div>
+        <div class="form-group">
+            <label for="Model">Capacity:</label>
+            <input type="text" id="Model" name="Model" class="form-control" value="{{ aircraft['model'] }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+{% include 'end.html' %}

@@ -1,0 +1,58 @@
+{% include 'top.html' %}
+<div id="content" class="container my-4">
+    <h1 class="page-title">{{page.get('title', 'Aircraft')}}</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                {% if session['isadmin'] == True %}
+                    <th>Delete</th>
+                    <th>AircraftID</th>
+                    <th>ICAOCode</th>
+                    <th>AircraftRegistration</th>
+                    <th>Name</th>
+                    <th>Manufacturer</th>
+                    <th>Model</th>
+                    <th>Update</th>
+                {% else %}
+                    <th>AircraftID</th>
+                    <th>ICAOCode</th>
+                    <th>AircraftRegistration</th>
+                    <th>Name</th>
+                    <th>Manufacturer</th>
+                    <th>Model</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in aircraft %}
+            <tr class="align-items-center">
+                {% if session['isadmin'] == True %}
+                    <td class="align-middle">
+                        <form action="{{ url_for('delete_aircraft', aircraft_id=item['aircraftid']) }}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                    <form name="{{item['aircraftid']}}_form" class="Update" method="POST" action="{{url_for('update_aircraft', aircraft_id=item['aircraftid'])}}">
+                        <input type="hidden" id="aircraftid" name="aircraftid" value="{{item['aircraftid']}}" />
+                        <td class="align-middle">{{item['aircraftid']}}</td>
+                        <td><input type="text" class="form-control" id="ICAOCode" name="ICAOCode" value="{{item['icaocode']}}" placeholder="{{item['icaocode']}}"></td>
+                        <td><input type="text" class="form-control" id="AircraftRegistration" name="AircraftRegistration" value="{{item['aircraftregistration']}}" placeholder="{{item['aircraftregistration']}}"></td>
+                        <td><input type="text" class="form-control" id="Name" name="Name" value="{{item['name']}}" placeholder="{{item['name']}}"></td>
+                        <td><input type="text" class="form-control" id="Manufacturer" name="Manufacturer" value="{{item['manufacturer']}}" placeholder="{{item['manufacturer']}}"></td>
+                        <td><input type="text" class="form-control" id="Model" name="Model" value="{{item['model']}}" placeholder="{{item['model']}}"></td>
+                        <td><button class="btn btn-primary btn-sm" type="submit">Update</button></td>
+                    </form>
+                {% else %}
+                    <td class="align-middle">{{item['aircraftid']}}</td>
+                    <td class="align-middle">{{item['icaocode']}}</td>
+                    <td class="align-middle">{{item['aircraftregistration']}}</td>
+                    <td class="align-middle">{{item['name']}}</td>
+                    <td class="align-middle">{{item['manufacturer']}}</td>
+                    <td class="align-middle">{{item['model']}}</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% include 'end.html' %}

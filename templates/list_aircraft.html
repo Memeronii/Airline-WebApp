@@ -1,0 +1,105 @@
+{% include 'top.html' %}
+<div id="content" class="container my-4">
+    <h1 class="page-title">{{ page.get('title', 'Aircraft') }}</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                {% if session['isadmin'] == True %}
+                    <th>Delete</th>
+                    <th>
+                        <a href="{{ url_for('list_aircraft_route', sort_by='AircraftID', sort_order='asc' if sort_by != 'AircraftID' or sort_order == 'desc' else 'desc') }}">
+                            AircraftID
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ url_for('list_aircraft_route', sort_by='ICAOCode', sort_order='asc' if sort_by != 'ICAOCode' or sort_order == 'desc' else 'desc') }}">
+                            ICAOCode
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ url_for('list_aircraft_route', sort_by='AircraftRegistration', sort_order='asc' if sort_by != 'AircraftRegistration' or sort_order == 'desc' else 'desc') }}">
+                            AircraftRegistration
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ url_for('list_aircraft_route', sort_by='Name', sort_order='asc' if sort_by != 'Name' or sort_order == 'desc' else 'desc') }}">
+                            Manufacturer
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ url_for('list_aircraft_route', sort_by='Manufacturer', sort_order='asc' if sort_by != 'Manufacturer' or sort_order == 'desc' else 'desc') }}">
+                            Model
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ url_for('list_aircraft_route', sort_by='Model', sort_order='asc' if sort_by != 'Model' or sort_order == 'desc' else 'desc') }}">
+                            Capacity
+                        </a>
+                    </th>
+                    <th>Update</th>
+                {% else %}
+                    <th>
+                        <a href="{{ url_for('list_aircraft_route', sort_by='AircraftID', sort_order='asc' if sort_by != 'AircraftID' or sort_order == 'desc' else 'desc') }}">
+                            AircraftID
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ url_for('list_aircraft_route', sort_by='ICAOCode', sort_order='asc' if sort_by != 'ICAOCode' or sort_order == 'desc' else 'desc') }}">
+                            ICAOCode
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ url_for('list_aircraft_route', sort_by='AircraftRegistration', sort_order='asc' if sort_by != 'AircraftRegistration' or sort_order == 'desc' else 'desc') }}">
+                            AircraftRegistration
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ url_for('list_aircraft_route', sort_by='Name', sort_order='asc' if sort_by != 'Name' or sort_order == 'desc' else 'desc') }}">
+                            Name
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ url_for('list_aircraft_route', sort_by='Manufacturer', sort_order='asc' if sort_by != 'Manufacturer' or sort_order == 'desc' else 'desc') }}">
+                            Manufacturer
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ url_for('list_aircraft_route', sort_by='Model', sort_order='asc' if sort_by != 'Model' or sort_order == 'desc' else 'desc') }}">
+                            Model
+                        </a>
+                    </th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in aircraft %}
+            <tr class="align-items-center">
+                {% if session['isadmin'] == True %}
+                    <td class="align-middle">
+                        <form action="{{ url_for('delete_aircraft', aircraft_id=item['aircraftid']) }}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                    <td class="align-middle">{{ item['aircraftid'] }}</td>
+                    <td class="align-middle">{{ item['icaocode'] }}</td>
+                    <td class="align-middle">{{ item['aircraftregistration'] }}</td>
+                    <td class="align-middle">{{ item['name'] }}</td>
+                    <td class="align-middle">{{ item['manufacturer'] }}</td>
+                    <td class="align-middle">{{ item['model'] }}</td>
+                    <td class="align-middle">
+                        <a href="{{ url_for('update_aircraft', aircraft_id=item['aircraftid']) }}" class="btn btn-primary btn-sm">Update</a>
+                    </td>
+                {% else %}
+                    <td class="align-middle">{{ item['aircraftid'] }}</td>
+                    <td class="align-middle">{{ item['icaocode'] }}</td>
+                    <td class="align-middle">{{ item['aircraftregistration'] }}</td>
+                    <td class="align-middle">{{ item['name'] }}</td>
+                    <td class="align-middle">{{ item['manufacturer'] }}</td>
+                    <td class="align-middle">{{ item['model'] }}</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% include 'end.html' %}

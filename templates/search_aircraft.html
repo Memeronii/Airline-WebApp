@@ -1,0 +1,33 @@
+{% include 'top.html' %}
+<div id="content" class="container my-4">
+    <h1 class="page-title">{{ page.title }}</h1>
+    <p class="text-muted">Enter any criteria in the fields below to search for an aircraft. You don't need to fill all the fields.</p>
+    <form name="searchform" class="" method="POST" action="{{ url_for('search_aircraft') }}">
+        <div class="form-group">
+            <label for="AircraftID">Aircraft ID</label>
+            <input class="form-control" type="text" id="AircraftID" name="AircraftID" placeholder="Enter Aircraft ID (optional)">
+        </div>
+        <div class="form-group">
+            <label for="ICAOCode">ICAO Code</label>
+            <input class="form-control" type="text" id="ICAOCode" name="ICAOCode" placeholder="Enter ICAO Code (optional)">
+        </div>
+        <div class="form-group">
+            <label for="AircraftRegistration">Aircraft Registration</label>
+            <input class="form-control" type="text" id="AircraftRegistration" name="AircraftRegistration" placeholder="Enter Aircraft Registration (optional)">
+        </div>
+        <div class="form-group">
+            <label for="Name">Manufacturer</label>
+            <input class="form-control" type="text" id="Name" name="Name" placeholder="Enter Name (optional)">
+        </div>
+        <div class="form-group">
+            <label for="Manufacturer">Model</label>
+            <input class="form-control" type="text" id="Manufacturer" name="Manufacturer" placeholder="Enter Manufacturer (optional)">
+        </div>
+        <div class="form-group">
+            <label for="Model">Capacity</label>
+            <input class="form-control" type="text" id="Model" name="Model" placeholder="Enter Model (optional)">
+        </div>
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+</div>
+{% include 'end.html' %}

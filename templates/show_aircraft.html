@@ -1,0 +1,13 @@
+{% include 'top.html' %}
+<div id="content" class="container my-4">
+    <h1>{{ aircraft['aircraftregistration'] }}</h1>
+    <p>ICAO Code: {{ aircraft['icaocode'] }}</p>
+    <p>Name: {{ aircraft['name'] }}</p>
+    <p>Manufacturer: {{ aircraft['manufacturer'] }}</p>
+    <p>Model: {{ aircraft['model'] }}</p>
+    <a href="{{ url_for('update_aircraft', aircraft_id=aircraft['aircraftid']) }}" class="btn btn-primary">Update</a>
+    <form action="{{ url_for('delete_aircraft', aircraft_id=aircraft['aircraftid']) }}" method="post" style="display:inline;">
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+</div>
+{% include 'end.html' %}

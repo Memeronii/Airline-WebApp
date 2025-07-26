@@ -1,0 +1,63 @@
+{% include 'top.html' %}
+<div id="content" class="container my-4">
+    <h1 class="page-title">{{ page.title }}</h1>
+    <form method="POST" action="{{ url_for('compare_aircraft') }}">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="AircraftID1">Enter First AircraftID</label>
+                <input type="text" class="form-control" id="AircraftID1" name="AircraftID1" placeholder="AircraftID 1" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="AircraftID2">Enter Second AircraftID</label>
+                <input type="text" class="form-control" id="AircraftID2" name="AircraftID2" placeholder="AircraftID 2" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Compare</button>
+    </form>
+    {% if aircraft1 and aircraft2 %}
+    <br/>
+    <h2>Comparison Results</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Attribute</th>
+                <th>Aircraft 1</th>
+                <th>Aircraft 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Aircraft ID</td>
+                <td>{{ aircraft1['aircraftid'] }}</td>
+                <td>{{ aircraft2['aircraftid'] }}</td>
+            </tr>
+            <tr>
+                <td>ICAO Code</td>
+                <td>{{ aircraft1['icaocode'] }}</td>
+                <td>{{ aircraft2['icaocode'] }}</td>
+            </tr>
+            <tr>
+                <td>Aircraft Registration</td>
+                <td>{{ aircraft1['aircraftregistration'] }}</td>
+                <td>{{ aircraft2['aircraftregistration'] }}</td>
+            </tr>
+            <tr>
+                <td>Manufacturer</td>
+                <td>{{ aircraft1['name'] }}</td>
+                <td>{{ aircraft2['name'] }}</td>
+            </tr>
+            <tr>
+                <td>Model</td>
+                <td>{{ aircraft1['manufacturer'] }}</td>
+                <td>{{ aircraft2['manufacturer'] }}</td>
+            </tr>
+            <tr>
+                <td>Capacity</td>
+                <td>{{ aircraft1['model'] }}</td>
+                <td>{{ aircraft2['model'] }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% include 'end.html' %}
