@@ -2,26 +2,11 @@
 
 A Flask-based web application for managing airline data, including users, user roles, and comprehensive search functionality. This project demonstrates database integration, user authentication, and CRUD operations in a web environment.
 
-## Features
-
-- **User Authentication**: Login/logout functionality with session management
-- **User Management**: 
-  - View all users and individual user profiles
-  - Add new users with form validation
-  - Edit and update existing user information
-  - Delete users with confirmation
-  - Search users by various criteria
-- **Reporting**: 
-  - Consolidated user reports with role information
-  - User statistics and analytics
-- **Responsive Design**: Bootstrap-based UI with mobile-friendly design
-- **Database Integration**: PostgreSQL database with comprehensive data management
-
 ## Technology Stack
 
 - **Backend**: Python Flask
 - **Database**: PostgreSQL
-- **Frontend**: HTML5, CSS3, Bootstrap 4
+- **Frontend**: HTML, CSS, Bootstrap
 - **JavaScript**: jQuery for enhanced interactivity
 - **Configuration**: INI-based configuration management
 
